@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <QRCode value={address} size={14*21} renderAs="svg" bgColor="#af0" fgColor="#22112a" />
+        <QRCode value={address} size={14*21} bgColor="#af0" fgColor="#22112a" />
         <span>{address}</span>
       </main>
     </div>

@@ -15,7 +15,7 @@ $qr-pixels: 21;
   padding: 0;
   background: #22112a;
 
-  svg {
+  svg, canvas {
     outline: $qr-scale solid #af0;
   }
 
