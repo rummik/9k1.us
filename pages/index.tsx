@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.scss'
 
 import { useState } from 'react'
 import useCookie from 'react-use-cookie'
-import QRCode from "react-qr-code"
+import QRCode from 'qrcode.react'
 
 const Home: NextPage = () => {
   const [ user ] = useState<string>(() =>
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <QRCode value={address} size={14*21} title={address} bgColor="#af0" fgColor="#22112a" />
+        <QRCode value={address} size={14*21} renderAs="svg" bgColor="#af0" fgColor="#22112a" />
         <span>{address}</span>
       </main>
     </div>
