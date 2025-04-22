@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content=">9k" />
+<title>&gt;9k</title>
+
+<svg
+  viewBox="0 0 23 23"
+  alt="A placeholder for a QR code"
+>
+  <a href="https://zick.kim">
+    <rect width="23" height="23" />
+    <path />
+    <rect x="15" y="20" width="8" height="3" />
+    <text x="16" y="21.85" textLength="6">***@9k1.us</text>
+  </a>
+</svg>
+
+<style>
+:root {
+  --qr-size: 23px;
+  --qr-scale: 14;
+
+  --dark: #22112a;
+  --light: #aaff00;
+}
+
+html, body {
+  background: var(--dark);
+}
+
+svg {
+  contain: layout;
+  position: absolute;
+  transform: scale(var(--qr-scale));
+
+  top: calc(50vh - var(--qr-size) * 0.5);
+  left: calc(50vw - var(--qr-size) * 0.5);
+  width: var(--qr-size);
+  height: var(--qr-size);
+
+  path {
+    fill: var(--dark);
+    shape-rendering: crispEdges;
+  }
+
+  rect {
+    fill: var(--light);
+  }
+
+  text {
+    fill: var(--dark);
+    font: bold .93px monospace;
+  }
+}
+</style>
+
+<script type="module" async>
+  import { render } from 'https://esm.run/qr-svg@1.1.0';
+
+  const email = document.querySelector('text');
+  const image = document.querySelector('svg');
+  const path = image.querySelector('path');
+
+  localStorage.address ??= email.textContent.replaceAll('*', () =>
+    Math.floor(Math.random() * 36).toString(36)
+  );
+
+  email.textContent = localStorage.address;
+
+  image.setAttribute('alt',
+    `A QR code of the email address: ${localStorage.address}`
+  );
+
+  path.setAttribute('d',
+    render(email.textContent)
+      .rects
+      .map(({ x, y, width, height }) =>
+        `M ${x+1} ${y+1} h ${width} v ${height} h ${-width}`
+      )
+      .join('')
+  );
+</script>
