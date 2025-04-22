@@ -1,6 +1,6 @@
 {
   "name": "9k1-us",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
